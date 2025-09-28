@@ -38,9 +38,9 @@ export const fetchResource = async <T = unknown>(
   endpoint: string,
   params: Record<string, string | number> = {}
 ): Promise<T> => {
-  const { blocked, wait } = checkRateLimit();
+  const { blocked } = checkRateLimit();
   if (blocked) {
-    throw new Error(`Rate limit exceeded. Automatic Retry after ${wait}s`);
+    throw new Error(`Rate limit exceeded.`);
   }
 
   const filteredParams = Object.fromEntries(
@@ -63,9 +63,7 @@ export const fetchResource = async <T = unknown>(
     // Free tier → always 5 requests per minute, so block for 60s
     applyRateLimit(60);
     const err = await response.json().catch(() => ({}));
-    throw new Error(
-      err.error || "Rate limit exceeded. Please wait 60s before retrying."
-    );
+    throw new Error(err.error || "Rate limit exceeded.");
   }
 
   if (!response.ok) {

@@ -22,6 +22,7 @@ export function ExploreStocks(): React.ReactElement {
     isLoading,
     isError,
     fetchNextPage,
+    error,
     hasNextPage,
     refetch,
     isFetchingNextPage,
@@ -98,7 +99,8 @@ export function ExploreStocks(): React.ReactElement {
       {/* loading / load more area + handling rate-limiting */}
       <div className="p-4 flex flex-col items-center w-full justify-center">
         {isError ? (
-          waitTime > 0 ? (
+          // check if the error is rate-limit related (429)
+          error?.message === "Rate limit exceeded." && waitTime >= 0 ? (
             <div className="text-red-600 text-center mt-4 w-full min-w-40 dark:text-red-500">
               Rate limit exceeded. Automatic Retry will be triggered in{" "}
               <span className="inline-block w-6 text-center font-mono">
