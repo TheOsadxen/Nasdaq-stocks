@@ -96,12 +96,23 @@ export function ExploreStocks(): React.ReactElement {
       </main>
 
       {/* loading / load more area + handling rate-limiting */}
-      <div className="p-4 flex flex-col items-center justify-center">
-        {waitTime > 0 ? (
-          <div className="text-red-600 text-center mt-4 dark:text-red-500">
-            Rate limit exceeded. Automatic Retry will be triggered in {waitTime}
-            s.
-          </div>
+      <div className="p-4 flex flex-col items-center w-full justify-center">
+        {isError ? (
+          waitTime > 0 ? (
+            <div className="text-red-600 text-center mt-4 w-full min-w-40 dark:text-red-500">
+              Rate limit exceeded. Automatic Retry will be triggered in{" "}
+              <span className="inline-block w-6 text-center font-mono">
+                {waitTime}s.
+              </span>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-40 text-red-600 dark:text-red-400 text-center p-4">
+              <p>
+                Something went wrong while fetching data. Please try again
+                later.
+              </p>
+            </div>
+          )
         ) : isFetchingNextPage ? (
           <div className="py-2 dark:text-white">Loading more...</div>
         ) : (

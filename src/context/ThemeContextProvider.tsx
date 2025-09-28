@@ -4,7 +4,7 @@ import { ThemeContext } from "./ThemeContext";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(
-    (localStorage.getItem("theme") as Theme) ?? "dark"
+    (localStorage.getItem("theme") as Theme) ?? "light"
   );
 
   // Load from localStorage on mount
@@ -15,8 +15,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.toggle("dark", stored === "dark");
     } else {
       // default dark
-      localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.add("light");
     }
   }, []);
 

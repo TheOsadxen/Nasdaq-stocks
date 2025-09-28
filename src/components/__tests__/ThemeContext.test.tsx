@@ -18,7 +18,7 @@ describe("ThemeProvider", () => {
     localStorage.clear();
   });
 
-  it("defaults to dark and toggles theme", async () => {
+  it("defaults to light and toggles theme", async () => {
     localStorage.removeItem("theme");
     const { getByText, getByTestId } = render(
       <ThemeProvider>
@@ -26,16 +26,16 @@ describe("ThemeProvider", () => {
       </ThemeProvider>
     );
 
-    expect(getByTestId("theme").textContent).toBe("dark");
-    expect(document.documentElement.classList.contains("dark")).toBe(true);
+    expect(getByTestId("theme").textContent).toBe("light");
+    expect(document.documentElement.classList.contains("dark")).toBe(false);
 
     // Toggle (wrapped in act)
     act(() => {
       fireEvent.click(getByText("toggle"));
     });
 
-    // after toggle it becomes light
-    expect(getByTestId("theme").textContent).toBe("light");
-    expect(document.documentElement.classList.contains("dark")).toBe(false);
+    // after toggle it becomes dark
+    expect(getByTestId("theme").textContent).toBe("dark");
+    expect(document.documentElement.classList.contains("dark")).toBe(true);
   });
 });

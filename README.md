@@ -42,7 +42,7 @@ src/
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
+   git clone https://github.com/TheOsadxen/Nasdaq-stocks.git
    cd <repo-name>
    ```
 
@@ -58,7 +58,7 @@ src/
    Create a `.env` file in the root of the project:
 
    ```
-   VITE_POLYGON_API_KEY=your_api_key_here
+   VITE_POLYGON_API_KEY=api_key_here
    ```
 
 4. **Start the development server**
@@ -99,7 +99,7 @@ This project includes unit tests and integration tests.
 
 ## 🌗 Theme (Dark/Light Mode)
 
-The app supports **dark mode** by default.  
+The app supports **dark mode**.  
 It uses a `ThemeContext` to toggle between dark and light, with Tailwind’s `dark:` classes.
 
 ---
@@ -116,23 +116,9 @@ Serve the build:
 npm run preview
 ```
 
----
-
-## 🔐 Notes
-
-- `.env` is ignored from Git.  
-- If you accidentally committed `.env`, remove it with:
-
-  ```bash
-  git rm --cached .env
-  git commit -m "Remove .env from repo"
-  git push
-  ```
-
-- Always rotate secrets if exposed.
 
 ---
 
 ## 📜 License
 
-This project is for educational/demo purposes only.
+This project is for demo purposes only.
