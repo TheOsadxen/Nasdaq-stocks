@@ -1,6 +1,5 @@
-//@ts-nocheck
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { waitFor, act } from "@testing-library/react";
+import { waitFor } from "@testing-library/react";
 import { fetchTickers } from "../../services/polygonAPI";
 import { renderHookWithClient } from "../../test/test-utils";
 import { useInfiniteTickers } from "../../hooks/useInfiniteTickers";
@@ -24,8 +23,12 @@ describe("useInfiniteTickers", () => {
       useInfiniteTickers({ search: "AAPL" })
     );
 
-    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await waitFor(() => expect((result as any).current.isSuccess).toBe(true));
 
-    expect(result.current.data?.pages[0].results[0].ticker).toBe("AAPL");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect((result as any).current.data?.pages[0].results[0].ticker).toBe(
+      "AAPL"
+    );
   });
 });

@@ -18,6 +18,7 @@ export function createTestQueryClient() {
 /**
  * renderWithClient - wraps UI with QueryClientProvider and ThemeProvider
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderWithClient(ui: React.ReactElement, options?: any) {
   const queryClient = createTestQueryClient();
   return {
@@ -34,6 +35,7 @@ export function renderWithClient(ui: React.ReactElement, options?: any) {
 /**
  * renderHookWithClient - helper for hooks tests
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderHookWithClient(hook: any, options: any = {}) {
   const queryClient = options.queryClient ?? createTestQueryClient();
   const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
