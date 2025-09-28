@@ -43,7 +43,7 @@ src/
 1. **Clone the repo**
    ```bash
    git clone https://github.com/TheOsadxen/Nasdaq-stocks.git
-   cd <repo-name>
+   cd Nasdaq-stocks
    ```
 
 2. **Install dependencies**
@@ -66,8 +66,8 @@ src/
    npm run dev
    ```
 
-   The app will be available at:  
-   👉 http://localhost:5173
+   The app will be available at:  http://localhost:5173
+   
 
 ---
 
@@ -115,7 +115,12 @@ Serve the build:
 ```bash
 npm run preview
 ```
+---
 
+## 🌐 Live Demo
+
+The app is deployed on Vercel and can be accessed here:  
+[https://nasdaq-stocks-fkwm.vercel.app/](https://nasdaq-stocks-fkwm.vercel.app/)
 
 ---
 
