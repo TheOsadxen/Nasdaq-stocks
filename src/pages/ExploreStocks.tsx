@@ -63,7 +63,7 @@ export function ExploreStocks(): React.ReactElement {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-            if (waitTime > 0) return; // still locked
+            if (waitTime > 0) return;
             fetchNextPage();
           }
         });
@@ -97,7 +97,7 @@ export function ExploreStocks(): React.ReactElement {
 
       {/* loading / load more area + handling rate-limiting */}
       <div className="p-4 flex flex-col items-center justify-center">
-        {isError && waitTime > 0 ? (
+        {waitTime > 0 ? (
           <div className="text-red-600 text-center mt-4 dark:text-red-500">
             Rate limit exceeded. Automatic Retry will be triggered in {waitTime}
             s.

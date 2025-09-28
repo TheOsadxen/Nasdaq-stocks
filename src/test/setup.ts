@@ -1,10 +1,11 @@
 import "@testing-library/jest-dom";
-import { afterAll, afterEach, beforeAll } from "vitest";
+import { beforeAll, afterAll, afterEach } from "vitest";
 import { server } from "./server";
+import { cleanup } from "@testing-library/react";
 
-// Start MSW server before tests
-beforeAll(() => server.listen());
-// Reset any request handlers that are declared as a part of our tests
-afterEach(() => server.resetHandlers());
-// Clean up after the tests are finished
+beforeAll(() => server.listen({ onUnhandledRequest: "warn" }));
+afterEach(() => {
+  server.resetHandlers();
+  cleanup();
+});
 afterAll(() => server.close());
